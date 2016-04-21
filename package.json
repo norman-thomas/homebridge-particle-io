@@ -1,8 +1,12 @@
 {
   "name": "homebridge-particle",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Particle plugin for homebridge: https://github.com/nfarina/homebridge",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/krvarma/homebridge-particle"
+  },
   "keywords": [
     "homebridge-plugin"
   ],
@@ -11,7 +15,7 @@
     "homebridge": ">=0.2.0"
   },
   "dependencies": {
-    "request": "^2.65.0"
-	"eventsource": ""
+    "request": "^2.65.0",
+    "eventsource": ""
   }
 }

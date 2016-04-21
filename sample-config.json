@@ -35,7 +35,9 @@
 					"accessory": "ParticleTemperature",
 					"name": "Kitchen Temperature",
 					"deviceid": "<<device id>>",
-					"type": "TEMPERATURE_SENSOR",
+					"type": "SENSOR",
+					"sensorType": "temperature",
+					"key": "temperature",
 					"event_name": "tvalue"
 				}
 			]
