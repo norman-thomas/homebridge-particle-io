@@ -45,9 +45,13 @@ function ParticleAccessory(log, url, access_token, device) {
 	this.type = device["type"];
 	this.functionName = device["function_name"];
 	this.eventName = device["event_name"];
+	this.sensorType = device["sensorType"];
+	this.key = device["key"];
 	this.accessToken = access_token;
 	this.url = url;
 	this.value = 20;
+	
+	console.log(this.name + " = " + this.sensorType);
 	
 	this.services = [];
 	
@@ -69,30 +73,58 @@ function ParticleAccessory(log, url, access_token, device) {
 			
 		this.services.push(this.lightService);
 	}
-	else if(this.type === "TEMPERATURE_SENSOR"){
-		this.temperatureService = new Service.TemperatureSensor(this.name);
+	else if(this.type === "SENSOR"){
+		var service;
 		
-		this.temperatureService
-			.getCharacteristic(Characteristic.CurrentTemperature)
-			.on('get', this.getDefaultValue.bind(this));
-			//.on('set', this.setCurrentValue.bind(this));
+		console.log("Sensor Type: " + this.sensorType.toLowerCase());
+
+		if(this.sensorType.toLowerCase() === "temperature"){
+			console.log("Temperature Sensor");
 			
-		var eventUrl = this.url + this.deviceId + "/events/" + this.eventName + "?access_token=" + this.accessToken;
+			service = new Service.TemperatureSensor(this.name);
+			
+			service
+				.getCharacteristic(Characteristic.CurrentTemperature)
+				.on('get', this.getDefaultValue.bind(this));
+		}
+		else if(this.sensorType.toLowerCase() === "humidity"){
+			console.log("Humidity Sensor");
+			
+			service = new Service.HumiditySensor(this.name);
+			
+			service
+				.getCharacteristic(Characteristic.CurrentRelativeHumidity)
+				.on('get', this.getDefaultValue.bind(this));
+		}
+		else if(this.sensorType.toLowerCase() === "light"){
+			console.log("Light Sensor");
+			
+			service = new Service.LightSensor(this.name);
+			
+			service
+				.getCharacteristic(Characteristic.CurrentAmbientLightLevel)
+				.on('get', this.getDefaultValue.bind(this));
+		}
+			
+		if(service != undefined){
+			console.log("Initializing " + service.displayName + ", " + this.sensorType);
+			
+			var eventUrl = this.url + this.deviceId + "/events/" + this.eventName + "?access_token=" + this.accessToken;
+			var es = new eventSource(eventUrl);
 
-		console.log(eventUrl);
+			console.log(eventUrl);
 
-		var es = new eventSource(eventUrl);
+			es.onerror = function() {
+				console.log('ERROR!');
+			};
+
+			es.addEventListener(this.eventName,
+				this.processEventData.bind(this), false);
+			
+			this.services.push(service);
+		}
 		
-		console.log(eventUrl);
-
-		es.onerror = function() {
-			console.log('ERROR!');
-		};
-
-		es.addEventListener(this.eventName,
-			this.processEventData.bind(this), false);
-			
-		this.services.push(this.temperatureService);
+		console.log("Servie Count: " + this.services.length);
 	}
 }
 
@@ -127,23 +159,35 @@ ParticleAccessory.prototype.setState = function(state, callback) {
 	);
 }
 
-ParticleAccessory.prototype.setTemperatureValue = function(temprature) {
-	this.temperatureService
-						.setCharacteristic(Characteristic.CurrentTemperature, temprature);
-}
-
 ParticleAccessory.prototype.processEventData = function(e){
 	var data = JSON.parse(e.data);
 	var tokens = data.data.split('=');
 	
-	if (tokens[0].toLowerCase() === "temperature") {
-		//console.log("Temperature " + tokens[1] + " C");
-		
-		this.value = parseFloat(tokens[1]);
+	console.log(tokens[0] + " = " + tokens[1] + ", " + this.services[1].displayName + ", " + this.sensorType + ", " + this.key.toLowerCase() + ", " + tokens[0].toLowerCase());
+	console.log(this.services[1] != undefined && this.key.toLowerCase() === tokens[0].toLowerCase());
+	
+	if(this.services[1] != undefined && this.key.toLowerCase() === tokens[0].toLowerCase()){	
+		if (tokens[0].toLowerCase() === "temperature") {
+			this.value = parseFloat(tokens[1]);
 
-		this.temperatureService
-			.getCharacteristic(Characteristic.CurrentTemperature)
-			.setValue(parseFloat(tokens[1]));
+			this.services[1]
+				.getCharacteristic(Characteristic.CurrentTemperature)
+				.setValue(parseFloat(tokens[1]));
+		}
+		else if (tokens[0].toLowerCase() === "humidity") {
+			this.value = parseFloat(tokens[1]);
+
+			this.services[1]
+				.getCharacteristic(Characteristic.CurrentRelativeHumidity)
+				.setValue(parseFloat(tokens[1]));
+		}
+		else if (tokens[0].toLowerCase() === "light") {
+			this.value = parseFloat(tokens[1]);
+
+			this.services[1]
+				.getCharacteristic(Characteristic.CurrentAmbientLightLevel)
+				.setValue(parseFloat(tokens[1]));
+		}
 	}
 }
 
