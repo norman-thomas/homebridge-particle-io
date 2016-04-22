@@ -3,13 +3,13 @@
 
 As you all know in the new version of [Homebridge](https://github.com/nfarina/homebridge), the plugin architecture is changed. In new Homebridge, plugins are published through NPM with name starts with *homebridge-*. Users can install the plugin using NPM.
 
-My previous example of Particle and Homebridge uses old plugin architecture. I have been thinking for a long time to upgrade my previous plugin to the new architecture. But because of many reasons it is delayed. Luckily last week I was able to complete and plublish to NPM.
+My previous example of Particle and Homebridge uses old plugin architecture. I have been thinking for a long time to upgrade my previous plugin to the new architecture. But because of many reasons it is delayed. Luckily last week I was able to complete and publish to NPM.
 
 You can install it using NPM like all other modules, you can install using:
 
 `npm install -g homebridge-particle`.
 
-In this version, I have made some changes from the older vresion. Mainly the plugin is now a Homebridge Platform. Also in this version accessories are defined in `config.json` file. The plugin loads the accessories from the `config.json` file and create accessory dynamically. A a sample configuration file is like:
+In this version, I have made some changes from the older version. Mainly the plugin is now a Homebridge Platform. Also in this version accessories are defined in `config.json` file. The plugin loads the accessories from the `config.json` file and create accessory dynamically. A sample configuration file is like:
 
     {
         "bridge": {
@@ -64,7 +64,7 @@ The `devices` array contains all the accessories. You can see the accessory obje
 
  - ***accessory*** - Accessory name, this is the name of the accessory.
  - ***name*** - Display name, this is the name to be displayed on the HomeKit app.
- - ***deviceid*** - Device ID of the Particle Device (Core, Photon or Electron). It is defined in accessory so that you can use different Particle Devices for different accessoy.
+ - ***deviceid*** - Device ID of the Particle Device (Core, Photon or Electron). It is defined in accessory so that you can use different Particle Devices for different accessory.
  - ***type*** - Type of the accessoy. As of now, the plugin supports 2 type, LIGHT and SENSOR. Type LIGHT represents a light, such as bedroom light, kitchen light, living room light, etc... Type SENSOR represents sensor accessory such as Temperature sensor, Humidity sensor, Light sensor, etc...
  - ***sensorType*** - Optional Sensor Type, this string object is optional. This is only valid when the accessory type is SENSOR. As of now the plugin supports 3 types of sensors, Temperature Sensor, Humidity Sensor and Light Sensor. More sensor will be supports in future versions.
  - ***event_name*** - The name of the event to listen for sensor value update. This is only valid if the accessory type is SENSOR. If the accessory is a type of SENSOR, then the plugin listens for events published from Particle  Device (using `Particle.publish`). The device firmware should publish the sensor values in the format `key=value`. The key identifies the sensor value. For a temperature sensor the key should be ***temperature***. For a humidity sensor the key should be ***humidity***. For light sensor it should be ***light***.
