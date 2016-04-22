@@ -3,7 +3,7 @@
 
 As you all know in the new version of [Homebridge](https://github.com/nfarina/homebridge), the plugin architecture is changed. In new Homebridge, plugins are published through NPM with name starts with *homebridge-*. Users can install the plugin using NPM.
 
-My previous example of Particle and Homebridge uses old plugin architecture. I have been thinking for a long time to upgrade my previous plugin to the new architecture. But because of many reasons it is delayed. Luckly last week I was able to complete and plublish to NPM.
+My previous example of Particle and Homebridge uses old plugin architecture. I have been thinking for a long time to upgrade my previous plugin to the new architecture. But because of many reasons it is delayed. Luckily last week I was able to complete and plublish to NPM.
 
 You can install it using NPM like all other modules, you can install using:
 
