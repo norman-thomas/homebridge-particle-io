@@ -1,6 +1,6 @@
 {
   "name": "homebridge-particle",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Particle plugin for homebridge: https://github.com/nfarina/homebridge",
   "license": "ISC",
   "repository": {
