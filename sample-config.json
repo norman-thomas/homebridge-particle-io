@@ -10,7 +10,7 @@
 
     "platforms": [
         {
-            "platform": "Particle",
+            "platform": "ParticleIO",
             "name": "Particle Devices",
 			"access_token": "<<access token>>",
 			"cloudurl": "https://api.spark.io/v1/devices/",
