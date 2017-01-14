@@ -17,10 +17,10 @@
   "bugs": {
     "url": "https://github.com/norman-thomas/homebridge-particle-io/issues"
   },
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "lint": "node_modules/eslint/bin/eslint.js index.js",
-    "jshint": "node_modules/jshint/bin/jshint index.js",
+    "lint": "node_modules/eslint/bin/eslint.js src/index.js",
+    "jshint": "node_modules/jshint/bin/jshint src/index.js",
     "check": "npm run lint && npm run jshint",
     "test": ""
   },
