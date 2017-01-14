@@ -1,0 +1,7 @@
+{
+  "esversion": 6,
+  "trailing": true,
+  "undef": true,
+  "unused": true,
+  "node": true
+}

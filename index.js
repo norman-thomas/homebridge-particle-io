@@ -117,8 +117,8 @@ ParticleAccessory.prototype.setState = (state, callback) => {
     {
       form: {
         access_token: this.accessToken,
-        args: argument,
-      },
+        args: argument
+      }
     },
     (error, response /* , body*/) => {
       console.log(response);
@@ -128,7 +128,7 @@ ParticleAccessory.prototype.setState = (state, callback) => {
       } else {
         callback(error);
       }
-    },
+    }
   );
 };
 
@@ -184,14 +184,14 @@ ParticlePlatform.prototype = {
         this.log,
         this.url,
         this.accessToken,
-        this.devices[index],
+        this.devices[index]
       );
 
       foundAccessories.push(accessory);
     }
 
     callback(foundAccessories);
-  },
+  }
 };
 
 module.exports = (homebridge) => {

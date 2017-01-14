@@ -1,15 +1,29 @@
 {
-  "name": "homebridge-particle",
-  "version": "0.0.4",
+  "name": "homebridge-particle-io",
+  "version": "0.0.1",
   "description": "Particle plugin for homebridge: https://github.com/nfarina/homebridge",
   "license": "ISC",
+  "keywords": [
+    "homebridge-plugin",
+    "homebridge",
+    "particle",
+    "particle photon",
+    "particle electron"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/krvarma/homebridge-particle"
+    "url": "git+https://github.com/norman-thomas/homebridge-particle-io.git"
   },
-  "keywords": [
-    "homebridge-plugin"
-  ],
+  "bugs": {
+    "url": "https://github.com/norman-thomas/homebridge-particle-io/issues"
+  },
+  "main": "index.js",
+  "scripts": {
+    "lint": "node_modules/eslint/bin/eslint.js index.js",
+    "jshint": "node_modules/jshint/bin/jshint index.js",
+    "check": "npm run lint && npm run jshint",
+    "test": ""
+  },
   "engines": {
     "node": ">=4.3.2",
     "homebridge": ">=0.2.0"
