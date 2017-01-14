@@ -25,7 +25,7 @@ class ParticleAccessory {
 
     this.services = [];
 
-    this.informationService = new this.Service.AccessoryInformation();
+    this.informationService = new Service.AccessoryInformation();
 
     this.informationService
     .setCharacteristic(Characteristic.Manufacturer, 'Particle')
