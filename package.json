@@ -29,16 +29,16 @@
     "homebridge": ">=0.2.0"
   },
   "dependencies": {
-    "chai": "^3.5.0",
     "eventsource": "",
-    "mocha": "^3.2.0",
-    "request": "^2.65.0",
-    "sinon": "^1.17.7"
+    "request": "^2.65.0"
   },
   "devDependencies": {
     "eslint": "^3.13.1",
     "eslint-config-airbnb-base": "^11.0.1",
     "eslint-plugin-import": "^2.2.0",
-    "jshint": "^2.9.4"
+    "jshint": "^2.9.4",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.7"
   }
 }
