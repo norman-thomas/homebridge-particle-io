@@ -76,7 +76,7 @@ class ParticleAccessory {
       if (service !== undefined) {
         this.log('Initializing ', service.displayName, ', ', this.sensorType);
 
-        const eventUrl = `${this.url}/${this.deviceId}/events/${this.eventName}?access_token=${this.accessToken}`;
+        const eventUrl = `${this.url}${this.deviceId}/events/${this.eventName}?access_token=${this.accessToken}`;
         const es = new EventSource(eventUrl);
 
         this.log(eventUrl);
@@ -99,7 +99,7 @@ class ParticleAccessory {
     this.log.info('URL: ', this.url);
     this.log.info('Device ID: ', this.deviceId);
 
-    const onUrl = `${this.url}/${this.deviceId}/${this.functionName}`;
+    const onUrl = `${this.url}${this.deviceId}/${this.functionName}`;
 
     this.log.info('Calling function: ', onUrl);
 
