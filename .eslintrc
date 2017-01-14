@@ -3,6 +3,10 @@
     "parserOptions": {
       "ecmsVersion": 6
     },
+    "env": {
+      "node": true,
+      "es6": true
+    },
     "rules": {
       "comma-dangle": ["error", {"function": "never"}]
     }
