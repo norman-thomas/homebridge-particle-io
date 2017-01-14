@@ -1,11 +1,12 @@
 const request = require('request');
 const EventSource = require('eventsource');
 
-export default class ParticleAccessory {
+class ParticleAccessory {
 
-  constructor(log, url, accessToken, device) {
-    const Service = global.homebridge.Service;
-    const Characteristic = global.homebridge.Characteristic;
+  constructor(log, url, accessToken, device, homebridge) {
+    this.homebridge = homebridge;
+    const Service = this.homebridge.hap.Service;
+    const Characteristic = this.homebridge.hap.Characteristic;
 
     this.log = log;
     this.name = device.name;
@@ -24,7 +25,7 @@ export default class ParticleAccessory {
 
     this.services = [];
 
-    this.informationService = new Service.AccessoryInformation();
+    this.informationService = new this.Service.AccessoryInformation();
 
     this.informationService
     .setCharacteristic(Characteristic.Manufacturer, 'Particle')
@@ -127,7 +128,7 @@ export default class ParticleAccessory {
   processEventData(e) {
     const data = JSON.parse(e.data);
     const tokens = data.data.split('=');
-    const Characteristic = global.homebridge.Characteristic;
+    const Characteristic = this.homebridge.hap.Characteristic;
 
     this.log(
       tokens[0], ' = ', tokens[1], ', ',
@@ -175,3 +176,5 @@ export default class ParticleAccessory {
     return this.services;
   }
 }
+
+module.exports = ParticleAccessory;

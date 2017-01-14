@@ -1,6 +1,6 @@
 const ParticleAccessory = require('./accessory.js');
 
-export default class ParticlePlatform {
+class ParticlePlatform {
 
   constructor(log, config) {
     this.log = log;
@@ -19,7 +19,8 @@ export default class ParticlePlatform {
         this.log,
         this.url,
         this.accessToken,
-        this.devices[index]
+        this.devices[index],
+        global.homebridge
       );
 
       foundAccessories.push(accessory);
@@ -28,3 +29,5 @@ export default class ParticlePlatform {
     callback(foundAccessories);
   }
 }
+
+module.exports = ParticlePlatform;
