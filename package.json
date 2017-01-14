@@ -19,8 +19,8 @@
   },
   "main": "src/index.js",
   "scripts": {
-    "lint": "node_modules/eslint/bin/eslint.js src/index.js",
-    "jshint": "node_modules/jshint/bin/jshint src/index.js",
+    "lint": "node_modules/eslint/bin/eslint.js src/",
+    "jshint": "node_modules/jshint/bin/jshint src/",
     "check": "npm run lint && npm run jshint",
     "test": ""
   },
