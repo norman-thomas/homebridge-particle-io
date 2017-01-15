@@ -9,6 +9,7 @@ You can install it using NPM like all other modules, using:
 
 In this version, I have made some changes from the older version. Mainly the plugin is now a Homebridge Platform. Also in this version accessories are defined in `config.json` file. The plugin loads the accessories from the `config.json` file and create accessory dynamically. A sample configuration file is like:
 
+```JSON
   {
     "bridge": {
       "name": "Homebridge",
@@ -50,6 +51,7 @@ In this version, I have made some changes from the older version. Mainly the plu
       }
     ]
   }
+```
 
 As you can see from the above example this `config.json` file defines 3 accessories. 2 Lights and one Temperature Sensor. The **access_token** defines the Particle Access Token and **cloud_url** defines the base Particle API url. If you are using the Particle Cloud, then the value of *cloud_url* should be https://api.particle.io/v1/devices/. If you are using local cloud, then replace with your sensor address.
 
