@@ -1,3 +1,9 @@
+[![npm][npm-image]][npm-url] [![Build Status](https://travis-ci.org/norman-thomas/homebridge-particle-io.svg?branch=feature-2-implement-tests)](https://travis-ci.org/norman-thomas/homebridge-particle-io) [![Coverage Status](https://coveralls.io/repos/github/norman-thomas/homebridge-particle-io/badge.svg?branch=feature-2-implement-tests)](https://coveralls.io/github/norman-thomas/homebridge-particle-io?branch=feature-2-implement-tests)
+
+[npm-image]: https://img.shields.io/npm/v/homebridge-particle-io.svg?style=flat
+[npm-url]: https://npmjs.org/package/homebridge-particle-io
+
+
 **Particle.io device plugin for Homebridge**
 -------------------------------------
 
