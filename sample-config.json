@@ -13,32 +13,28 @@
       "platform": "ParticleIO",
       "name": "Particle Devices",
       "access_token": "<<access token>>",
-      "cloudurl": "https://api.spark.io/v1/devices/",
+      "cloud_url": "https://api.spark.io/v1/devices/",
       "devices": [
         {
-          "accessory": "ParticleLight",
           "name": "Bedroom Light",
-          "deviceid": "<<device id>>",
-          "type": "LIGHT",
+          "type": "lightbulb",
+          "device_id": "<<device id>>",
           "function_name": "onoff",
           "args": "0={STATE}"
         },
         {
-          "accessory": "ParticleLight",
           "name": "Kitchen Light",
-          "deviceid": "<<device id>>",
-          "type": "LIGHT",
+          "type": "lightbulb",
+          "device_id": "<<device id>>",
           "function_name": "onoff",
           "args": "1={STATE}"
         },
         {
-          "accessory": "ParticleTemperature",
           "name": "Kitchen Temperature",
-          "deviceid": "<<device id>>",
-          "type": "SENSOR",
-          "sensorType": "temperature",
+          "type": "temperaturesensor",
+          "device_id": "<<device id>>",
           "key": "temperature",
-          "event_name": "tvalue"
+          "event_name": "temperature"
         }
       ]
     }
