@@ -44,7 +44,6 @@ In this version, I have made some changes from the older version. Mainly the plu
             "name": "Kitchen Temperature",
             "type": "temperaturesensor",
             "device_id": "<<device id>>",
-            "key": "temperature",
             "event_name": "tvalue"
           }
         ]
@@ -56,7 +55,9 @@ As you can see from the above example this `config.json` file defines 3 accessor
 
 The `devices` array contains all the accessories. You can see the accessory object defines following string objects:
 
- - ***name*** - Display name, this is the name to be displayed on the HomeKit app.
- - ***type*** - Type of the accessory. As of now, the plugin supports 3 types: `lightbulb`, `temperaturesensor` and `humiditysensor`.
- - ***device_id*** - Device ID of the Particle Device (Core, Photon or Electron). It is defined in accessory so that you can use different Particle Devices for different accessory.
- - ***event_name*** - The name of the event to listen for sensor value update. This is only valid if the accessory type is SENSOR. If the accessory is a type of SENSOR, then the plugin listens for events published from Particle Device (using `Particle.publish`). The device firmware should publish the sensor values as raw numbers.
+ - **name** - Display name, this is the name to be displayed on the HomeKit app.
+ - **type** - Type of the accessory. As of now, the plugin supports 3 types: `lightbulb`, `temperaturesensor` and `humiditysensor`.
+ - **device_id** - Device ID of the Particle Device (Core, Photon or Electron). It is defined in accessory so that you can use different Particle Devices for different accessory.
+ - **event_name** - The name of the event to listen for sensor value update. This is only valid if the accessory is a sensor (i.e. currently `temperaturesensor` or `humiditysensor`). The plugin listens for events published from a Particle Device (using `Particle.publish`). The device firmware should publish the sensor values as a raw number.
+ - **function_name** - The name of the function that will be called when an action is triggered via HomeKit. This is only valid if the accessory is an actor (i.e. currently only `lightbulb`).
+
