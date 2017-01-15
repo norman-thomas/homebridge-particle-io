@@ -6,7 +6,7 @@ class SensorAccessory extends Accessory {
     super(log, url, accessToken, device, homebridge, ServiceType, CharacteristicType);
 
     this.eventName = device.event_name;
-    this.key = device.key || null;
+    this.key = device.key;
     this.value = null;
     this.unit = null;
 
@@ -40,10 +40,9 @@ class SensorAccessory extends Accessory {
     const service = this.services[1];
 
     this.log.info(
-      result, ',',
-      service.displayName, ',',
-      this.type, ',',
-      this.key.toLowerCase()
+      result, '-',
+      service.displayName, '-',
+      this.type
     );
 
     this.setCurrentValue(parseFloat(result));
