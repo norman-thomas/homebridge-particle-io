@@ -44,7 +44,6 @@ In this version, I have made some changes from the older version. Mainly the plu
             "name": "Kitchen Temperature",
             "type": "temperaturesensor",
             "device_id": "<<device id>>",
-            "sensorType": "temperature",
             "key": "temperature",
             "event_name": "tvalue"
           }
