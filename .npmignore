@@ -1,6 +1,7 @@
 .gitignore
 
 _config.yml
+test/
 
 .eslintrc
 .jshintrc
