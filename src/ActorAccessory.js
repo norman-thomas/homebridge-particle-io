@@ -16,7 +16,7 @@ class ActorAccessory extends Accessory {
 
   setState(value, callback) {
     const url = `${this.url}${this.deviceId}/${this.functionName}`;
-    this.log.info('Setting current state via: ', url);
+    this.log('Setting current state via: ', url);
 
     const argument = this.args.replace('{STATE}', value);
     request.post(
@@ -32,9 +32,9 @@ class ActorAccessory extends Accessory {
           this.log(response);
           callback();
         } else {
-          this.log.error(error);
-          this.log.error(response);
-          this.log.error(body);
+          this.log(error);
+          this.log(response);
+          this.log(body);
           callback(error);
         }
       }

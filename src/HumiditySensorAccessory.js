@@ -10,7 +10,7 @@ class HumiditySensorAccessory extends SensorAccessory {
 
   setCurrentValue(value) {
     if (value < 0 || value > 100) {
-      this.log.warning('Value for humidity outside of range:', value);
+      this.log('Value for humidity outside of range:', value);
     }
     super.setCurrentValue(value);
   }

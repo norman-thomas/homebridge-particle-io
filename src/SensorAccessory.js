@@ -11,7 +11,7 @@ class SensorAccessory extends Accessory {
     this.unit = null;
 
     const eventUrl = `${this.url}${this.deviceId}/events/${this.eventName}?access_token=${this.accessToken}`;
-    this.log.info('Listening for events from:', eventUrl);
+    this.log('Listening for events from:', eventUrl);
 
     const events = new EventSource(eventUrl);
     events.addEventListener(this.eventName, this.processEventData.bind(this));
@@ -39,7 +39,7 @@ class SensorAccessory extends Accessory {
 
     const service = this.services[1];
 
-    this.log.info(
+    this.log(
       result, '-',
       service.displayName, '-',
       this.type
