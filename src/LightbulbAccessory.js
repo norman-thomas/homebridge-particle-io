@@ -1,4 +1,4 @@
-const ActorAccessory = require('./Accessory.js').ActorAccessory;
+const ActorAccessory = require('./ActorAccessory.js');
 
 class LightbulbAccessory extends ActorAccessory {
 
