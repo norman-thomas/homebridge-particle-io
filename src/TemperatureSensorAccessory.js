@@ -1,4 +1,4 @@
-const SensorAccessory = require('./new_accessory.js').SensorAccessory;
+const SensorAccessory = require('./Accessory.js').SensorAccessory;
 
 class TemperatureSensorAccessory extends SensorAccessory {
 
