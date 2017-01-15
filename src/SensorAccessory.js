@@ -2,8 +2,8 @@ const EventSource = require('eventsource');
 const Accessory = require('./Accessory.js');
 
 class SensorAccessory extends Accessory {
-  constructor(log, device, homebridge, ServiceType, CharacteristicType) {
-    super(log, device, homebridge);
+  constructor(log, url, accessToken, device, homebridge, ServiceType, CharacteristicType) {
+    super(log, url, accessToken, device, homebridge);
 
     this.eventName = device.event_name;
     this.key = device.key || null;

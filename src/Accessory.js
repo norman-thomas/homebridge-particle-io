@@ -1,7 +1,9 @@
 class Accessory {
 
-  constructor(log, device, homebridge) {
+  constructor(log, url, accessToken, device, homebridge) {
     this.log = log;
+    this.url = url;
+    this.accessToken = accessToken;
     this.homebridge = homebridge;
 
     this.name = device.name;

@@ -2,10 +2,10 @@ const SensorAccessory = require('./SensorAccessory.js');
 
 class TemperatureSensorAccessory extends SensorAccessory {
 
-  constructor(log, device, homebridge) {
+  constructor(log, url, accessToken, device, homebridge) {
     const Service = homebridge.hap.Service;
     const Characteristic = homebridge.hap.Characteristic;
-    super(log, device, homebridge, Service.TemperatureSensor, Characteristic.CurrentTemperature);
+    super(log, url, accessToken, device, homebridge, Service.TemperatureSensor, Characteristic.CurrentTemperature);
   }
 
   setCurrentValue(value) {
