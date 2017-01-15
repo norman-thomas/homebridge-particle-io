@@ -1,4 +1,4 @@
-const ParticlePlatform = require('./platform.js');
+const ParticlePlatform = require('./Platform.js');
 
 module.exports = (homebridge) => {
   global.homebridge = homebridge;
