@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "eventsource": "",
+    "nyc": "^10.0.0",
     "request": "^2.65.0"
   },
   "devDependencies": {
