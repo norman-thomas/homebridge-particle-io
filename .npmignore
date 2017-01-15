@@ -1,0 +1,9 @@
+.gitignore
+
+_config.yml
+
+.eslintrc
+.jshintrc
+
+.codeclimate.yml
+.travis.yaml
