@@ -13,7 +13,7 @@
       "platform": "ParticleIO",
       "name": "Particle Devices",
       "access_token": "<<access token>>",
-      "cloud_url": "https://api.spark.io/v1/devices/",
+      "cloud_url": "https://api.particle.io/v1/devices/",
       "devices": [
         {
           "name": "Bedroom Light",
@@ -33,7 +33,6 @@
           "name": "Kitchen Temperature",
           "type": "temperaturesensor",
           "device_id": "<<device id>>",
-          "key": "temperature",
           "event_name": "temperature"
         }
       ]
