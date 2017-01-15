@@ -6,14 +6,15 @@ node_js:
 cache: yarn
 
 env:
-    - CXX=g++-4.8
+    - CXX=g++-4.9
 
 addons:
     apt:
         sources:
             - ubuntu-toolchain-r-test
         packages:
-            - g++-4.8
+            - g++-4.9
+            - libavahi-compat-libdnssd-dev
 
 script:
     - yarn test
