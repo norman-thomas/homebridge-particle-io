@@ -1,5 +1,5 @@
-const Service = require("hap-nodejs").Service;
-const Characteristic = require("hap-nodejs").Characteristic;
+const Service = require('hap-nodejs').Service;
+const Characteristic = require('hap-nodejs').Characteristic;
 
 const dummyHomebridge = (config) => {
   const homebridge = {
