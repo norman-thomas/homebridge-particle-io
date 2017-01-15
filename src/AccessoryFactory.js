@@ -12,6 +12,7 @@ class AccessoryFactory {
 
   constructor(log, url, accessToken, devices, homebridge) {
     this.log = log;
+    this.url = url;
     this.accessToken = accessToken;
     this.devices = devices;
     this.homebridge = homebridge;
