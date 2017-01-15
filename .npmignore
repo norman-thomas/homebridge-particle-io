@@ -2,6 +2,7 @@
 
 _config.yml
 test/
+.nyc_output/
 
 .eslintrc
 .jshintrc
