@@ -11,7 +11,7 @@ const LightbulbAccessory = require('../src/LightbulbAccessory.js');
 const TemperatureSensorAccessory = require('../src/TemperatureSensorAccessory.js');
 const HumiditySensorAccessory = require('../src/HumiditySensorAccessory.js');
 
-global.homebridge = dummyHomebridge;
+global.homebridge = dummyHomebridge(dummyConfig);
 
 
 describe('Platform.js', () => {
