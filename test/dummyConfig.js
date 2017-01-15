@@ -23,6 +23,12 @@ const dummyConfig = {
       type: 'temperaturesensor',
       device_id: '1234567890abcdef',
       event_name: 'temperature'
+    },
+    {
+      name: 'Kitchen Humidity',
+      type: 'humiditysensor',
+      device_id: '1234567890abcdef',
+      event_name: 'humidity'
     }
   ]
 };
