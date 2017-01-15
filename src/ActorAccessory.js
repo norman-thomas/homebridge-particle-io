@@ -3,7 +3,7 @@ const Accessory = require('./Accessory.js');
 
 class ActorAccessory extends Accessory {
   constructor(log, url, accessToken, device, homebridge, ServiceType, CharacteristicType) {
-    super(log, url, accessToken, device, homebridge);
+    super(log, url, accessToken, device, homebridge, ServiceType, CharacteristicType);
     this.functionName = device.function_name;
 
     const actorService = new ServiceType(this.name);

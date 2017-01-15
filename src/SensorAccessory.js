@@ -3,7 +3,7 @@ const Accessory = require('./Accessory.js');
 
 class SensorAccessory extends Accessory {
   constructor(log, url, accessToken, device, homebridge, ServiceType, CharacteristicType) {
-    super(log, url, accessToken, device, homebridge);
+    super(log, url, accessToken, device, homebridge, ServiceType, CharacteristicType);
 
     this.eventName = device.event_name;
     this.key = device.key || null;
@@ -40,15 +40,15 @@ class SensorAccessory extends Accessory {
     const service = this.services[1];
 
     this.log.info(
-      result, ', ',
-      service.displayName, ', ',
-      this.sensorType, ', ',
+      result, ',',
+      service.displayName, ',',
+      this.type, ',',
       this.key.toLowerCase()
     );
 
     this.setCurrentValue(this.parseValue(result));
     service
-    .getCharacteristic(this.characteristic)
+    .getCharacteristic(this.CharacteristicType)
     .setValue(this.value);
   }
 
