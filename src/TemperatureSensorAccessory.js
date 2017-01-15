@@ -10,7 +10,7 @@ class TemperatureSensorAccessory extends SensorAccessory {
 
   setCurrentValue(value) {
     if (value < -255 || value > 100) {
-      this.log.warning('Value for temperature outside of range:', value);
+      this.log('Value for temperature outside of range:', value);
     }
     super.setCurrentValue(value);
   }
