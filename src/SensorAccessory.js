@@ -46,14 +46,10 @@ class SensorAccessory extends Accessory {
       this.key.toLowerCase()
     );
 
-    this.setCurrentValue(this.parseValue(result));
+    this.setCurrentValue(parseFloat(result));
     service
     .getCharacteristic(this.CharacteristicType)
     .setValue(this.value);
-  }
-
-  static parseValue(s) {
-    return parseFloat(s);
   }
 
   setCurrentValue(value) {
