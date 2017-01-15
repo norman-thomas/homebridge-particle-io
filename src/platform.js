@@ -1,31 +1,18 @@
-const ParticleAccessory = require('./accessory.js');
+const AccessoryFactory = require('./AccessoryFactory.js');
 
 class ParticlePlatform {
 
   constructor(log, config) {
     this.log = log;
     this.accessToken = config.access_token;
-    this.deviceId = config.deviceid;
-    this.url = config.cloudurl;
+    this.deviceId = config.device_id;
+    this.url = config.cloud_url;
     this.devices = config.devices;
+    this.accessoryFactory = new AccessoryFactory(log, this.url, this.accessToken, this.devices, global.homebridge);
   }
 
   accessories(callback) {
-    const foundAccessories = [];
-    const count = this.devices.length;
-
-    for (let index = 0; index < count; index += 1) {
-      const accessory = new ParticleAccessory(
-        this.log,
-        this.url,
-        this.accessToken,
-        this.devices[index],
-        global.homebridge
-      );
-
-      foundAccessories.push(accessory);
-    }
-
+    const foundAccessories = this.accessoryFactory.getAccessories();
     callback(foundAccessories);
   }
 }
