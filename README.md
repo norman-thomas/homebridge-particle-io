@@ -1,4 +1,4 @@
-[![npm][npm-image]][npm-url] [![Build Status](https://travis-ci.org/norman-thomas/homebridge-particle-io.svg)](https://travis-ci.org/norman-thomas/homebridge-particle-io) [![Coverage Status](https://coveralls.io/repos/github/norman-thomas/homebridge-particle-io/badge.svg)](https://coveralls.io/github/norman-thomas/homebridge-particle-io)
+[![npm][npm-image]][npm-url] [![CodeFactor](https://www.codefactor.io/repository/github/norman-thomas/homebridge-particle-io/badge)](https://www.codefactor.io/repository/github/norman-thomas/homebridge-particle-io) [![Build Status](https://travis-ci.org/norman-thomas/homebridge-particle-io.svg)](https://travis-ci.org/norman-thomas/homebridge-particle-io) [![Coverage Status](https://coveralls.io/repos/github/norman-thomas/homebridge-particle-io/badge.svg)](https://coveralls.io/github/norman-thomas/homebridge-particle-io)
 
 [npm-image]: https://img.shields.io/npm/v/homebridge-particle-io.svg?style=flat
 [npm-url]: https://npmjs.org/package/homebridge-particle-io
