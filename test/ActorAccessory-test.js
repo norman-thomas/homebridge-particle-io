@@ -35,25 +35,24 @@ describe('ActorAccessory.js', () => {
   });
 
   describe('setState', () => {
+    let accessory;
+    let Service;
+    let Characteristic;
+
     beforeEach(() => {
-      sinon.stub(request, 'post');
-    });
-
-    afterEach(() => {
-      request.post.restore();
-    });
-
-    it('should send value', () => {
       const homebridge = dummyHomebridge(dummyConfig);
       const device = dummyConfig.devices[0];
       const dummyURL = 'https://some.random.url.com/';
       const dummyAccessToken = 'MY_top_SECRET_access_TOKEN';
-      const Service = homebridge.hap.Service;
-      const Characteristic = homebridge.hap.Characteristic;
-      const accessory = new ActorAccessory(
+      Service = homebridge.hap.Service;
+      Characteristic = homebridge.hap.Characteristic;
+      accessory = new ActorAccessory(
         () => {}, dummyURL, dummyAccessToken, device, homebridge, Service.Lightbulb, Characteristic.On
       );
+    });
 
+    it('should send value', () => {
+      sinon.stub(request, 'post');
       const value = 17.9;
       accessory.setState(value, () => {});
 
@@ -62,29 +61,37 @@ describe('ActorAccessory.js', () => {
         'https://some.random.url.com/abcdef1234567890/onoff',
         {
           form: {
-            access_token: dummyAccessToken,
+            access_token: 'MY_top_SECRET_access_TOKEN',
             args: 'value=17.9'
           }
         }
       );
+      request.post.restore();
     });
 
-    it.skip('should call the callback function', () => {
-      const homebridge = dummyHomebridge(dummyConfig);
-      const device = dummyConfig.devices[0];
-      const dummyURL = 'https://some.random.url.com/';
-      const dummyAccessToken = 'MY_top_SECRET_access_TOKEN';
-      const Service = homebridge.hap.Service;
-      const Characteristic = homebridge.hap.Characteristic;
-      const accessory = new ActorAccessory(
-        () => {}, dummyURL, dummyAccessToken, device, homebridge, Service.Lightbulb, Characteristic.On
-      );
-
+    it('should call the callback function', () => {
       const spy = sinon.spy();
+      sinon.stub(request, 'post', () => { accessory.setStateCallback(undefined, 200, 'body', spy); });
+
       const value = 17.9;
       accessory.setState(value, spy);
 
       expect(spy).to.have.been.calledOnce;
+      expect(spy.lastCall.args).to.have.length(0);
+      request.post.restore();
+    });
+
+    it('should call the callback function with error parameter', () => {
+      const spy = sinon.spy();
+      sinon.stub(request, 'post', () => { accessory.setStateCallback('some error', 200, 'body', spy); });
+
+      const value = 17.9;
+      accessory.setState(value, spy);
+
+      expect(spy).to.have.been.calledOnce;
+      expect(spy.lastCall.args).to.have.length(1);
+      expect(spy).to.have.been.calledWith('some error');
+      request.post.restore();
     });
   });
 });
