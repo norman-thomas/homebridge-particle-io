@@ -19,5 +19,7 @@ addons:
 script:
     - yarn test
 
-after_success: yarn run coverage
+after_success:
+    - yarn run coverage
+    - bash <(curl -s https://codecov.io/bash)
 
