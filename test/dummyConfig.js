@@ -9,14 +9,14 @@ const dummyConfig = {
       type: 'lightbulb',
       device_id: 'abcdef1234567890',
       function_name: 'onoff',
-      args: '0={STATE}'
+      args: 'value={STATE}'
     },
     {
       name: 'Kitchen Light',
       type: 'lightbulb',
       device_id: '1234567890abcdef',
       function_name: 'onoff',
-      args: '1={STATE}'
+      args: 'value={STATE}'
     },
     {
       name: 'Kitchen Temperature',

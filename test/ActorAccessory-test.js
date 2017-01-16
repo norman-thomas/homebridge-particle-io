@@ -1,6 +1,10 @@
 require('should');
 const sinon = require('sinon');
+const chai = require('chai');
 const request = require('request');
+chai.use(require('sinon-chai'));
+
+const expect = chai.expect;
 
 const dummyConfig = require('./dummyConfig.js');
 const dummyHomebridge = require('./dummyHomebridge.js');
@@ -13,7 +17,7 @@ describe('ActorAccessory.js', () => {
     it('should assign config values to member variables', () => {
       const homebridge = dummyHomebridge(dummyConfig);
       const device = dummyConfig.devices[0];
-      const dummyURL = 'https://some.random.url.com';
+      const dummyURL = 'https://some.random.url.com/';
       const dummyAccessToken = 'MY_top_SECRET_access_TOKEN';
       const Service = homebridge.hap.Service;
       const Characteristic = homebridge.hap.Characteristic;
@@ -42,21 +46,27 @@ describe('ActorAccessory.js', () => {
     it('should send value', () => {
       const homebridge = dummyHomebridge(dummyConfig);
       const device = dummyConfig.devices[0];
-      const dummyURL = 'https://some.random.url.com';
+      const dummyURL = 'https://some.random.url.com/';
       const dummyAccessToken = 'MY_top_SECRET_access_TOKEN';
       const Service = homebridge.hap.Service;
       const Characteristic = homebridge.hap.Characteristic;
       const accessory = new ActorAccessory(
         () => {}, dummyURL, dummyAccessToken, device, homebridge, Service.Lightbulb, Characteristic.On
       );
-      const spy = sinon.spy();
+
       const value = 17.9;
-      accessory.setState(value, spy);
-      spy.should.be.calledOnce;
-      // FIXME fix the following assertions
-      spy.calledWith(123).should.be.true;
-      request.post.should.be.calledOnce;
-      request.post.calledWith(55).should.be.true;
+      accessory.setState(value, () => {});
+
+      expect(request.post.calledOnce).to.be.true;
+      expect(request.post.calledWith(
+        'https://some.random.url.com/abcdef1234567890/onoff',
+        {
+          form: {
+            access_token: dummyAccessToken,
+            args: 'value=17.9'
+          }
+        }
+      )).to.be.true;
     });
   });
 });
