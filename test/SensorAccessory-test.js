@@ -1,7 +1,6 @@
 require('should');
 const sinon = require('sinon');
 const chai = require('chai');
-const request = require('request');
 chai.use(require('sinon-chai'));
 
 const expect = chai.expect;
