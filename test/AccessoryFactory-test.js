@@ -1,11 +1,9 @@
 require('should');
-const sinon = require('sinon');
 
 const dummyConfig = require('./dummyConfig.js');
 const dummyHomebridge = require('./dummyHomebridge.js');
 
 const AccessoryFactory = require('../src/AccessoryFactory.js');
-const Accessory = require('../src/Accessory.js');
 const LightbulbAccessory = require('../src/LightbulbAccessory.js');
 const TemperatureSensorAccessory = require('../src/TemperatureSensorAccessory.js');
 const HumiditySensorAccessory = require('../src/HumiditySensorAccessory.js');
@@ -20,7 +18,7 @@ describe('AccessoryFactory.js', () => {
       const dummyAccessToken = 'MY_top_SECRET_access_TOKEN';
       const factory = new AccessoryFactory(() => {}, dummyURL, dummyAccessToken, devices, homebridge);
       factory.url.should.be.equal(dummyURL);
-      factory.accessToken.should.be.equal('MY_top_SECRET_access_TOKEN');
+      factory.accessToken.should.be.equal(dummyAccessToken);
       factory.devices.should.be.deepEqual(devices);
       factory.homebridge.should.be.equal(homebridge);
     });
