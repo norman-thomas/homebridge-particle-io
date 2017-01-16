@@ -1,29 +1,29 @@
 machine:
-    node:
-        version: 6
-    environment:
-        YARN_VERSION: 0.18.1
-        PATH: "${PATH}:${HOME}/.yarn/bin:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+  node:
+    version: 6
+  environment:
+    YARN_VERSION: 0.18.1
+    PATH: "${PATH}:${HOME}/.yarn/bin:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
 
-        dependencies:
-            pre:
-                - |
-                    if [[ ! -e ~/.yarn/bin/yarn || $(yarn --version) != "${YARN_VERSION}" ]]; then
-                    echo "Download and install Yarn."
-                    curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version $YARN_VERSION
-                    else
-                    echo "The correct version of Yarn is already installed."
-                    fi
-            override:
-                - yarn install
-            cache_directories:
-                - ~/.yarn
-                - ~/.cache/yarn
+dependencies:
+  pre:
+    - |
+      if [[ ! -e ~/.yarn/bin/yarn || $(yarn --version) != "${YARN_VERSION}" ]]; then
+        echo "Download and install Yarn."
+        curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version $YARN_VERSION
+      else
+        echo "The correct version of Yarn is already installed."
+      fi
+  override:
+    - yarn install
+  cache_directories:
+    - ~/.yarn
+    - ~/.cache/yarn
 
-            test:
-                override:
-                    - yarn test
-                post:
-                    - yarn run coverage
-                    - bash <(curl -s https://codecov.io/bash)
+test:
+  override:
+    - yarn test
+  post:
+    - yarn run coverage
+    - bash <(curl -s https://codecov.io/bash)
 
