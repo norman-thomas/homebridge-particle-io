@@ -7,6 +7,7 @@ machine:
 
 dependencies:
   pre:
+    - sudo apt-get update && sudo apt-get install libavahi-compat-libdnssd-dev
     - |
       if [[ ! -e ~/.yarn/bin/yarn || $(yarn --version) != "${YARN_VERSION}" ]]; then
         echo "Download and install Yarn."
