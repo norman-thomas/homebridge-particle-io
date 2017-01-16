@@ -1,5 +1,6 @@
 require('should');
 const sinon = require('sinon');
+const expect = require('chai').expect;
 
 const plugin = require('../src/index.js');
 const ParticlePlatform = require('../src/Platform.js');
@@ -14,7 +15,7 @@ describe('index.js', () => {
       const spy = sinon.spy();
       const homebridge = { registerPlatform: spy };
       plugin(homebridge);
-      spy.calledWith('homebridge-particle-io', 'ParticleIO', ParticlePlatform).should.be.true;
+      expect(spy.calledWith('homebridge-particle-io', 'ParticleIO', ParticlePlatform)).to.be.true;
     });
 
     it('platform should expose homebridge globally', () => {
