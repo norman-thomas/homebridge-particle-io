@@ -3,5 +3,7 @@
   "trailing": true,
   "undef": true,
   "unused": true,
-  "node": true
+  "node": true,
+  "mocha": true,
+  "expr": true
 }
