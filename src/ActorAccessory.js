@@ -27,18 +27,20 @@ class ActorAccessory extends Accessory {
           args: argument
         }
       },
-      (error, response, body) => {
-        if (!error) {
-          this.log(response);
-          callback();
-        } else {
-          this.log(error);
-          this.log(response);
-          this.log(body);
-          callback(error);
-        }
-      }
+      (error, response, body) => this.setStateCallback(error, response, body, callback)
     );
+  }
+
+  setStateCallback(error, response, body, callback) {
+    if (!error) {
+      this.log(response);
+      callback();
+    } else {
+      this.log(error);
+      this.log(response);
+      this.log(body);
+      callback(error);
+    }
   }
 }
 

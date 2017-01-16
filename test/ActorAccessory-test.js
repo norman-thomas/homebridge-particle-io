@@ -35,11 +35,11 @@ describe('ActorAccessory.js', () => {
   });
 
   describe('setState', () => {
-    before(() => {
-      sinon.spy(request, 'post');
+    beforeEach(() => {
+      sinon.stub(request, 'post');
     });
 
-    after(() => {
+    afterEach(() => {
       request.post.restore();
     });
 
@@ -57,8 +57,8 @@ describe('ActorAccessory.js', () => {
       const value = 17.9;
       accessory.setState(value, () => {});
 
-      expect(request.post.calledOnce).to.be.true;
-      expect(request.post.calledWith(
+      expect(request.post).to.have.been.calledOnce;
+      expect(request.post).to.have.been.calledWith(
         'https://some.random.url.com/abcdef1234567890/onoff',
         {
           form: {
@@ -66,7 +66,25 @@ describe('ActorAccessory.js', () => {
             args: 'value=17.9'
           }
         }
-      )).to.be.true;
+      );
+    });
+
+    it.skip('should call the callback function', () => {
+      const homebridge = dummyHomebridge(dummyConfig);
+      const device = dummyConfig.devices[0];
+      const dummyURL = 'https://some.random.url.com/';
+      const dummyAccessToken = 'MY_top_SECRET_access_TOKEN';
+      const Service = homebridge.hap.Service;
+      const Characteristic = homebridge.hap.Characteristic;
+      const accessory = new ActorAccessory(
+        () => {}, dummyURL, dummyAccessToken, device, homebridge, Service.Lightbulb, Characteristic.On
+      );
+
+      const spy = sinon.spy();
+      const value = 17.9;
+      accessory.setState(value, spy);
+
+      expect(spy).to.have.been.calledOnce;
     });
   });
 });
