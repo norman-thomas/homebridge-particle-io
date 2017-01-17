@@ -29,6 +29,18 @@ const dummyConfig = {
       type: 'humiditysensor',
       device_id: '1234567890abcdef',
       event_name: 'humidity'
+    },
+    {
+      name: 'Kitchen Light Sensor',
+      type: 'lightsensor',
+      device_id: '1234567890abcdef',
+      event_name: 'light'
+    },
+    {
+      name: 'Kitchen Motion',
+      type: 'motionsensor',
+      device_id: '1234567890abcdef',
+      event_name: 'motion'
     }
   ]
 };

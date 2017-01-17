@@ -1,11 +1,15 @@
 const LightbulbAccessory = require('./LightbulbAccessory.js');
 const HumiditySensorAccessory = require('./HumiditySensorAccessory.js');
 const TemperatureSensorAccessory = require('./TemperatureSensorAccessory.js');
+const LightSensorAccessory = require('./LightSensorAccessory.js');
+const MotionSensorAccessory = require('./MotionSensorAccessory.js');
 
 const accessoryRegistry = {
   lightbulb: LightbulbAccessory,
   temperaturesensor: TemperatureSensorAccessory,
-  humiditysensor: HumiditySensorAccessory
+  humiditysensor: HumiditySensorAccessory,
+  lightsensor: LightSensorAccessory,
+  motionsensor: MotionSensorAccessory
 };
 
 class AccessoryFactory {
@@ -24,7 +28,9 @@ class AccessoryFactory {
   }
 
   createAccessory(device) {
-    return new accessoryRegistry[device.type.toLowerCase()](this.log, this.url, this.accessToken, device, this.homebridge);
+    return new accessoryRegistry[device.type.toLowerCase()](
+      this.log, this.url, this.accessToken, device, this.homebridge
+    );
   }
 }
 

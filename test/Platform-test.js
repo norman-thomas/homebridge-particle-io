@@ -10,6 +10,8 @@ const Accessory = require('../src/Accessory.js');
 const LightbulbAccessory = require('../src/LightbulbAccessory.js');
 const TemperatureSensorAccessory = require('../src/TemperatureSensorAccessory.js');
 const HumiditySensorAccessory = require('../src/HumiditySensorAccessory.js');
+const LightSensorAccessory = require('../src/LightSensorAccessory.js');
+const MotionSensorAccessory = require('../src/MotionSensorAccessory.js');
 
 global.homebridge = dummyHomebridge(dummyConfig);
 
@@ -33,10 +35,17 @@ describe('Platform.js', () => {
       platform.accessories(accessoryCallbackSpy);
       accessoryCallbackSpy.should.have.been.calledOnce;
       const args = accessoryCallbackSpy.args[0][0];
-      args.length.should.be.equal(4);
+      args.length.should.be.equal(dummyConfig.devices.length);
       args.forEach(arg => arg.should.be.an.instanceOf(Accessory));
       args.map(arg => arg.constructor).should.be.deepEqual(
-        [LightbulbAccessory, LightbulbAccessory, TemperatureSensorAccessory, HumiditySensorAccessory]
+        [
+          LightbulbAccessory,
+          LightbulbAccessory,
+          TemperatureSensorAccessory,
+          HumiditySensorAccessory,
+          LightSensorAccessory,
+          MotionSensorAccessory
+        ]
       );
     });
   });
