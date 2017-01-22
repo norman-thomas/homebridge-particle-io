@@ -21,7 +21,13 @@ describe('SensorAccessory.js', () => {
       const Service = homebridge.hap.Service;
       const Characteristic = homebridge.hap.Characteristic;
       const accessory = new SensorAccessory(
-        () => {}, dummyURL, dummyAccessToken, device, homebridge, Service.HumiditySensor, Characteristic.CurrentRelativeHumidity
+        () => {},
+        dummyURL,
+        dummyAccessToken,
+        device,
+        homebridge,
+        Service.HumiditySensor,
+        Characteristic.CurrentRelativeHumidity
       );
       accessory.eventName.should.be.equal(device.event_name);
       accessory.eventUrl.should.be.equal(
@@ -46,7 +52,13 @@ describe('SensorAccessory.js', () => {
       Service = homebridge.hap.Service;
       Characteristic = homebridge.hap.Characteristic;
       accessory = new SensorAccessory(
-        () => {}, dummyURL, dummyAccessToken, device, homebridge, Service.HumiditySensor, Characteristic.CurrentRelativeHumidity
+        () => {},
+        dummyURL,
+        dummyAccessToken,
+        device,
+        homebridge,
+        Service.HumiditySensor,
+        Characteristic.CurrentRelativeHumidity
       );
     });
 
