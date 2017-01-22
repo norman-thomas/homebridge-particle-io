@@ -17,17 +17,19 @@ class ActorAccessory extends Accessory {
   }
 
   callParticleFunction(arg, callback, outputRAW) {
-    const raw = !!outputRAW;
     const url = `${this.url}${this.deviceId}/${this.functionName}`;
     this.log('Calling function: "', url, '" with arg: ', arg);
+    const form = {
+      access_token: this.accessToken,
+      arg
+    };
+    if (outputRAW) {
+      form.format = 'raw';
+    }
     request.post(
       url,
       {
-        form: {
-          access_token: this.accessToken,
-          raw,
-          arg
-        }
+        form
       },
       callback
     );
