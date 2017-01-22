@@ -51,7 +51,6 @@ class ActorAccessory extends Accessory {
 
   setStateCallback(error, response, body, callback) {
     if (!error) {
-      this.log(response);
       callback();
     } else {
       this.log(error);
