@@ -41,6 +41,13 @@ const dummyConfig = {
       type: 'motionsensor',
       device_id: '1234567890abcdef',
       event_name: 'motion'
+    },
+    {
+      name: 'Kitchen Switch',
+      type: 'switch',
+      device_id: '1234567890abcdef',
+      function_name: 'power',
+      args: 'power={STATE}'
     }
   ]
 };

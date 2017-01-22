@@ -7,6 +7,7 @@ const dummyHomebridge = require('./dummyHomebridge.js');
 const Platform = require('../src/Platform.js');
 const AccessoryFactory = require('../src/AccessoryFactory.js');
 const Accessory = require('../src/Accessory.js');
+const SwitchAccessory = require('../src/SwitchAccessory.js');
 const LightbulbAccessory = require('../src/LightbulbAccessory.js');
 const TemperatureSensorAccessory = require('../src/TemperatureSensorAccessory.js');
 const HumiditySensorAccessory = require('../src/HumiditySensorAccessory.js');
@@ -44,7 +45,8 @@ describe('Platform.js', () => {
           TemperatureSensorAccessory,
           HumiditySensorAccessory,
           LightSensorAccessory,
-          MotionSensorAccessory
+          MotionSensorAccessory,
+          SwitchAccessory
         ]
       );
     });
