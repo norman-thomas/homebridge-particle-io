@@ -62,7 +62,7 @@ describe('ActorAccessory.js', () => {
         {
           form: {
             access_token: 'MY_top_SECRET_access_TOKEN',
-            args: 'value=17.9'
+            arg: 'value=17.9'
           }
         }
       );

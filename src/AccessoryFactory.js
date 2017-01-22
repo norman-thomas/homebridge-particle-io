@@ -1,4 +1,5 @@
 const LightbulbAccessory = require('./LightbulbAccessory.js');
+const SwitchAccessory = require('./SwitchAccessory.js');
 const HumiditySensorAccessory = require('./HumiditySensorAccessory.js');
 const TemperatureSensorAccessory = require('./TemperatureSensorAccessory.js');
 const LightSensorAccessory = require('./LightSensorAccessory.js');
@@ -6,6 +7,7 @@ const MotionSensorAccessory = require('./MotionSensorAccessory.js');
 
 const accessoryRegistry = {
   lightbulb: LightbulbAccessory,
+  switch: SwitchAccessory,
   temperaturesensor: TemperatureSensorAccessory,
   humiditysensor: HumiditySensorAccessory,
   lightsensor: LightSensorAccessory,

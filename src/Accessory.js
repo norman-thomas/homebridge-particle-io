@@ -12,6 +12,7 @@ class Accessory {
     this.deviceId = device.device_id;
     this.fakeSerial = device.device_id.slice(-8).toUpperCase();
     this.type = device.type.toLowerCase();
+    this.value = null;
 
     const Service = homebridge.hap.Service;
     const Characteristic = homebridge.hap.Characteristic;
