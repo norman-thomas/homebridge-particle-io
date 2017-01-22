@@ -5,7 +5,6 @@ const dummyHomebridge = require('./dummyHomebridge.js');
 
 const AccessoryFactory = require('../src/AccessoryFactory.js');
 const LightbulbAccessory = require('../src/LightbulbAccessory.js');
-const SwitchAccessory = require('../src/SwitchAccessory.js');
 const TemperatureSensorAccessory = require('../src/TemperatureSensorAccessory.js');
 const HumiditySensorAccessory = require('../src/HumiditySensorAccessory.js');
 
