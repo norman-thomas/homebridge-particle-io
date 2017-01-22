@@ -37,7 +37,6 @@ class ActorAccessory extends Accessory {
 
   getState(callback) {
     this.callParticleFunction('?', (error, response, body) => {
-      this.log(body);
       this.value = parseFloat(body);
       callback(null, this.value);
     },
@@ -47,7 +46,7 @@ class ActorAccessory extends Accessory {
   setState(value, callback) {
     this.value = value;
     const arg = this.args.replace('{STATE}', value);
-    this.callParticleFunction(arg, (error, response, body) => this.setStateCallback(error, response, body, callback));
+    this.callParticleFunction(arg, (error, response, body) => this.setStateCallback(error, response, body, callback), true);
   }
 
   setStateCallback(error, response, body, callback) {
