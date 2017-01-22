@@ -16,7 +16,8 @@ class ActorAccessory extends Accessory {
     this.services.push(actorService);
   }
 
-  callParticleFunction(arg, callback) {
+  callParticleFunction(arg, callback, outputRAW) {
+    const raw = !!outputRAW;
     const url = `${this.url}${this.deviceId}/${this.functionName}`;
     this.log('Calling function: "', url, '" with arg: ', arg);
     request.post(
@@ -24,6 +25,7 @@ class ActorAccessory extends Accessory {
       {
         form: {
           access_token: this.accessToken,
+          raw,
           arg
         }
       },
@@ -34,10 +36,10 @@ class ActorAccessory extends Accessory {
   getState(callback) {
     this.callParticleFunction('?', (error, response, body) => {
       this.log(body);
-      console.log(body);
-      this.value = body;
+      this.value = parseFloat(body);
       callback(null, this.value);
-    });
+    },
+    true);
   }
 
   setState(value, callback) {
