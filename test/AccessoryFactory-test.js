@@ -35,7 +35,7 @@ describe('AccessoryFactory.js', () => {
       const dummyURL = 'https://some.random.url.com';
       const dummyAccessToken = 'MY_top_SECRET_access_TOKEN';
       const factory = new AccessoryFactory(() => {}, dummyURL, dummyAccessToken, devices, homebridge);
-      factory.getAccessories().should.have.length(3);
+      factory.getAccessories().should.have.length(devices.length);
       factory.getAccessories().map(accessory => accessory.constructor).should.be.deepEqual(
         [TemperatureSensorAccessory, HumiditySensorAccessory, LightbulbAccessory]
       );

@@ -7,7 +7,6 @@ class SensorAccessory extends Accessory {
 
     this.eventName = device.event_name;
     this.key = device.key;
-    this.value = null;
     this.unit = null;
 
     this.eventUrl = `${this.url}${this.deviceId}/events/${this.eventName}?access_token=${this.accessToken}`;
