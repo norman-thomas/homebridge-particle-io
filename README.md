@@ -29,7 +29,7 @@ In this version, I have made some changes from the older version. Mainly the plu
 
     "platforms": [
       {
-        "platform": "Particle",
+        "platform": "ParticleIO",
         "name": "Particle Devices",
         "access_token": "<<access token>>",
         "cloud_url": "https://api.particle.io/v1/devices/",
