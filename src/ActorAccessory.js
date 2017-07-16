@@ -37,7 +37,7 @@ class ActorAccessory extends Accessory {
     this.callParticleFunction("power", '?', (error, response, body) => {
       this.value = parseInt(body);
       try {
-    		callback(null, this.value);
+        callback(null, this.value);
       } catch (error) {
         this.log('Caught error '+ error + ' when calling homebridge callback.');
       }

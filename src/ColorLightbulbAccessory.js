@@ -26,7 +26,7 @@ class ColorLightbulbAccessory extends DimmableLightbulbAccessory {
     this.callParticleFunction(this.hueFunctionName, '?', (error, response, body) => {
       this.hue = parseInt(body);
       try {
-    		callback(null, this.hue);
+        callback(null, this.hue);
       } catch (error) {
         this.log('Caught error '+ error + ' when calling homebridge callback.');
       }
