@@ -1,4 +1,6 @@
 const LightbulbAccessory = require('./LightbulbAccessory.js');
+const DimmableLightbulbAccessory = require('./DimmableLightbulbAccessory.js');
+const ColorLightbulbAccessory = require('./ColorLightbulbAccessory.js');
 const SwitchAccessory = require('./SwitchAccessory.js');
 const HumiditySensorAccessory = require('./HumiditySensorAccessory.js');
 const TemperatureSensorAccessory = require('./TemperatureSensorAccessory.js');
@@ -7,8 +9,8 @@ const MotionSensorAccessory = require('./MotionSensorAccessory.js');
 
 const accessoryRegistry = {
   lightbulb: LightbulbAccessory,
-  dimmableLightbulb: DimmableLightbulbAccessory,
-  colorLightbulb: ColorLightbulbAccessory,
+  dimmablelightbulb: DimmableLightbulbAccessory,
+  colorlightbulb: ColorLightbulbAccessory,
   switch: SwitchAccessory,
   temperaturesensor: TemperatureSensorAccessory,
   humiditysensor: HumiditySensorAccessory,
@@ -32,6 +34,7 @@ class AccessoryFactory {
   }
 
   createAccessory(device) {
+    this.log("Create Accessory for device:", device)
     return new accessoryRegistry[device.type.toLowerCase()](
       this.log, this.url, this.accessToken, device, this.homebridge
     );

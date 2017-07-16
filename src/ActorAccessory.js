@@ -33,10 +33,14 @@ class ActorAccessory extends Accessory {
     );
   }
 
-  getState(functionName, callback) {
-    this.callParticleFunction(functionName, '?', (error, response, body) => {
-      this.value = parseFloat(body);
-      callback(null, this.value);
+  getState(callback) {
+    this.callParticleFunction("power", '?', (error, response, body) => {
+      this.value = parseInt(body);
+      try {
+    		callback(null, this.value);
+    	} catch (error) {
+    		this.log('Caught error '+ error + ' when calling homebridge callback.');
+    	}
     },
     true);
   }

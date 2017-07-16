@@ -1,4 +1,4 @@
-const ActorAccessory = require('./LightbulbAccessory.js');
+const LightbulbAccessory = require('./LightbulbAccessory.js');
 
 class DimmableLightbulbAccessory extends LightbulbAccessory {
 
@@ -21,17 +21,13 @@ class DimmableLightbulbAccessory extends LightbulbAccessory {
   getBrightness(callback) {
     this.callParticleFunction(this.brightnessFunctionName, '?', (error, response, body) => {
       this.brightness = parseInt(body);
-      callback(null, this.brightness);
+      try {
+    		callback(null, this.brightness);
+    	} catch (error) {
+    		this.log('Caught error '+ error + ' when calling homebridge callback.');
+    	}
     },
     true);
-  }
-
-  setState(value, callback) {
-    super.setState("power", value ? '1' : '0', callback);
-  }
-
-  getState(callback) {
-    super.getState("power", callback);
   }
 
 }
