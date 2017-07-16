@@ -3,13 +3,12 @@ const DimmableLightbulbAccessory = require('./DimmableLightbulbAccessory.js');
 class ColorLightbulbAccessory extends DimmableLightbulbAccessory {
 
   constructor(log, url, accessToken, device, homebridge) {
-    const Service = homebridge.hap.Service;
     const Characteristic = homebridge.hap.Characteristic;
     super(log, url, accessToken, device, homebridge);
 
     this.hueFunctionName = "hue"
 		this.actorService.getCharacteristic(Characteristic.Hue)
-  		               .on('set', this.setHue.bind(this))
+                     .on('set', this.setHue.bind(this))
                      .on('get', this.getHue.bind(this));
 
     this.saturationFunctionName = "saturation"
@@ -28,9 +27,9 @@ class ColorLightbulbAccessory extends DimmableLightbulbAccessory {
       this.hue = parseInt(body);
       try {
     		callback(null, this.hue);
-    	} catch (error) {
-    		this.log('Caught error '+ error + ' when calling homebridge callback.');
-    	}
+      } catch (error) {
+        this.log('Caught error '+ error + ' when calling homebridge callback.');
+      }
     },
     true);
   }
@@ -44,10 +43,10 @@ class ColorLightbulbAccessory extends DimmableLightbulbAccessory {
     this.callParticleFunction(this.saturationFunctionName, '?', (error, response, body) => {
       this.saturation = parseInt(body);
       try {
-    		callback(null, this.saturation);
-    	} catch (error) {
-    		this.log('Caught error '+ error + ' when calling homebridge callback.');
-    	}
+        callback(null, this.saturation);
+      } catch (error) {
+        this.log('Caught error '+ error + ' when calling homebridge callback.');
+      }
     },
     true);
   }

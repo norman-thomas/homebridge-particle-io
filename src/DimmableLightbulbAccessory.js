@@ -3,7 +3,6 @@ const LightbulbAccessory = require('./LightbulbAccessory.js');
 class DimmableLightbulbAccessory extends LightbulbAccessory {
 
   constructor(log, url, accessToken, device, homebridge) {
-    const Service = homebridge.hap.Service;
     const Characteristic = homebridge.hap.Characteristic;
     super(log, url, accessToken, device, homebridge);
 
@@ -22,10 +21,10 @@ class DimmableLightbulbAccessory extends LightbulbAccessory {
     this.callParticleFunction(this.brightnessFunctionName, '?', (error, response, body) => {
       this.brightness = parseInt(body);
       try {
-    		callback(null, this.brightness);
-    	} catch (error) {
-    		this.log('Caught error '+ error + ' when calling homebridge callback.');
-    	}
+        callback(null, this.brightness);
+      } catch (error) {
+        this.log('Caught error '+ error + ' when calling homebridge callback.');
+      }
     },
     true);
   }

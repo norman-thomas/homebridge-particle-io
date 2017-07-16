@@ -38,9 +38,9 @@ class ActorAccessory extends Accessory {
       this.value = parseInt(body);
       try {
     		callback(null, this.value);
-    	} catch (error) {
-    		this.log('Caught error '+ error + ' when calling homebridge callback.');
-    	}
+      } catch (error) {
+        this.log('Caught error '+ error + ' when calling homebridge callback.');
+      }
     },
     true);
   }
