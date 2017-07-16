@@ -7,6 +7,8 @@ const MotionSensorAccessory = require('./MotionSensorAccessory.js');
 
 const accessoryRegistry = {
   lightbulb: LightbulbAccessory,
+  dimmableLightbulb: DimmableLightbulbAccessory,
+  colorLightbulb: ColorLightbulbAccessory,
   switch: SwitchAccessory,
   temperaturesensor: TemperatureSensorAccessory,
   humiditysensor: HumiditySensorAccessory,
