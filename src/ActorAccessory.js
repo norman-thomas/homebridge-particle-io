@@ -2,22 +2,20 @@ const request = require('request');
 const Accessory = require('./Accessory.js');
 
 class ActorAccessory extends Accessory {
+
   constructor(log, url, accessToken, device, homebridge, ServiceType, CharacteristicType) {
     super(log, url, accessToken, device, homebridge, ServiceType, CharacteristicType);
 
-    this.functionName = device.function_name;
+    this.actorService = new ServiceType(this.name);
+    this.actorService.getCharacteristic(CharacteristicType)
+                     .on('set', this.setState.bind(this))
+                     .on('get', this.getState.bind(this));
 
-    const actorService = new ServiceType(this.name);
-    actorService
-    .getCharacteristic(CharacteristicType)
-    .on('set', this.setState.bind(this))
-    .on('get', this.getState.bind(this));
-
-    this.services.push(actorService);
+    this.services.push(this.actorService);
   }
 
-  callParticleFunction(arg, callback, outputRAW) {
-    const url = `${this.url}${this.deviceId}/${this.functionName}`;
+  callParticleFunction(functionName, arg, callback, outputRAW) {
+    const url = `${this.url}${this.deviceId}/${functionName}`;
     this.log('Calling function: "', url, '" with arg: ', arg);
     const form = {
       access_token: this.accessToken,
@@ -36,20 +34,23 @@ class ActorAccessory extends Accessory {
   }
 
   getState(callback) {
-    this.callParticleFunction('?', (error, response, body) => {
-      this.value = parseFloat(body);
-      callback(null, this.value);
+    this.callParticleFunction("power", '?', (error, response, body) => {
+      this.value = parseInt(body);
+      try {
+        callback(null, this.value);
+      } catch (error) {
+        this.log('Caught error '+ error + ' when calling homebridge callback.');
+      }
     },
     true);
   }
 
-  setState(value, callback) {
+  setState(functionName, value, callback) {
     this.value = value;
-    const arg = this.args.replace('{STATE}', value);
-    this.callParticleFunction(arg, (error, response, body) => this.setStateCallback(error, response, body, callback), true);
+    this.callParticleFunction(functionName, value, (error, response, body) => this.callbackHelper(error, response, body, callback), true);
   }
 
-  setStateCallback(error, response, body, callback) {
+  callbackHelper(error, response, body, callback) {
     if (!error) {
       callback();
     } else {
