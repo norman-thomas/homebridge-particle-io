@@ -46,7 +46,8 @@ In this version, I have made some changes from the older version. Mainly the plu
             "type": "lightbulb",
             "device_id": "<<device id>>",
             "function_name": "onoff",
-            "args": "1={STATE}"
+            "args": "1={STATE}",
+            "accessory_id": 1
           },
           {
             "name": "Kitchen Temperature",
@@ -69,4 +70,10 @@ The `devices` array contains all the accessories. You can see the accessory obje
  - **device_id** - Device ID of the Particle Device (Core, Photon or Electron). It is defined in accessory so that you can use different Particle Devices for different accessory.
  - **event_name** - The name of the event to listen for sensor value update. This is only valid if the accessory is a sensor (i.e. currently `temperaturesensor` or `humiditysensor`). The plugin listens for events published from a Particle Device (using `Particle.publish`). The device firmware should publish the sensor values as a raw number.
  - **function_name** - The name of the function that will be called when an action is triggered via HomeKit. This is only valid if the accessory is an actor (i.e. currently only `lightbulb`).
+ - **accessory_id** - The `accessory_id` may be used in order to allow for 2 accessories of the same type to be used with the same particle board.
 
+Each actor accessory type has a respective function it calls.
+ - **Switch** - `power`
+ - **Lightbulb** - `power`
+ - **DimmableLightbulb** - `brightness`
+ - **ColorLightbulb** - `hue` `saturation`
