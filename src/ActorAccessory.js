@@ -6,6 +6,7 @@ class ActorAccessory extends Accessory {
   constructor(log, url, accessToken, device, homebridge, ServiceType, CharacteristicType) {
     super(log, url, accessToken, device, homebridge, ServiceType, CharacteristicType);
 
+    this.accessoryId = device.accessory_id;
     this.actorService = new ServiceType(this.name);
     this.actorService.getCharacteristic(CharacteristicType)
                      .on('set', this.setState.bind(this))
@@ -16,10 +17,11 @@ class ActorAccessory extends Accessory {
 
   callParticleFunction(functionName, arg, callback, outputRAW) {
     const url = `${this.url}${this.deviceId}/${functionName}`;
-    this.log('Calling function: "', url, '" with arg: ', arg);
+    const allArgs = this.accessory_id != null ? `${arg}accessory_id=${this.accessory_id}` : arg;
+    this.log('Calling function: "', url, '" with args: ', allArgs);
     const form = {
       access_token: this.accessToken,
-      arg
+      allArgs
     };
     if (outputRAW) {
       form.format = 'raw';

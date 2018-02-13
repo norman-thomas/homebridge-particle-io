@@ -27,7 +27,8 @@
           "type": "lightbulb",
           "device_id": "<<device id>>",
           "function_name": "onoff",
-          "args": "1={STATE}"
+          "args": "1={STATE}",
+          "accessory_id": 1
         },
         {
           "name": "Kitchen Temperature",
