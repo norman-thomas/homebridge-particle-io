@@ -33,6 +33,7 @@ describe('SensorAccessory.js', () => {
       accessory.eventUrl.should.be.equal(
         'https://some.random.url.com/1234567890abcdef/events/humidity?access_token=MY_top_SECRET_access_TOKEN'
       );
+      accessory.split_character.should.be.equal(device.split_character);
 
       accessory.services.should.have.length(2);
       accessory.services[1].should.be.an.instanceOf(Service.HumiditySensor);
