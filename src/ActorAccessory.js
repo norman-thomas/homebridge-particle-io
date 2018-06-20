@@ -48,7 +48,7 @@ class ActorAccessory extends Accessory {
 
   setState(value, callback) {
     this.value = value;
-    this.callParticleFunction(this.functionName, value, (error, response, body) => this.callbackHelper(error, response, body, callback), true);
+    this.callParticleFunction(this.function_name, value, (error, response, body) => this.callbackHelper(error, response, body, callback), true);
   }
 
   callbackHelper(error, response, body, callback) {
