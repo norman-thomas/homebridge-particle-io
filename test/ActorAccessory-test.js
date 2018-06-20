@@ -50,7 +50,7 @@ describe('ActorAccessory.js', () => {
     it('should send value', () => {
       sinon.stub(request, 'post');
       const value = 17;
-      accessory.setState("testFunctionName", value, () => {});
+      accessory.setState(value, () => {});
 
       expect(request.post).to.have.been.calledOnce;
       expect(request.post).to.have.been.calledWith(
@@ -71,7 +71,7 @@ describe('ActorAccessory.js', () => {
       sinon.stub(request, 'post', () => { accessory.callbackHelper(undefined, 200, 'body', spy); });
 
       const value = 17;
-      accessory.setState("testFunctionName", value, spy);
+      accessory.setState(value, spy);
 
       expect(spy).to.have.been.calledOnce;
       expect(spy.lastCall.args).to.have.length(0);
@@ -83,7 +83,7 @@ describe('ActorAccessory.js', () => {
       sinon.stub(request, 'post', () => { accessory.callbackHelper('some error', 200, 'body', spy); });
 
       const value = 17;
-      accessory.setState("testFunctionName", value, spy);
+      accessory.setState(value, spy);
 
       expect(spy).to.have.been.calledOnce;
       expect(spy.lastCall.args).to.have.length(1);

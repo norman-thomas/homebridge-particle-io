@@ -9,7 +9,7 @@ class LightbulbAccessory extends ActorAccessory {
   }
 
   setState(value, callback) {
-    super.setState("power", value ? '1' : '0', callback);
+    super.setState(value ? '1' : '0', callback);
   }
 
 }
