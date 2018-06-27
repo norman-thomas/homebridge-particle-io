@@ -8,6 +8,7 @@ class SensorAccessory extends Accessory {
     this.eventName = device.event_name;
     this.key = device.key;
     this.unit = null;
+    this.split_character = !device.split_character ? '=' : device.split_character;
 
     this.eventUrl = `${this.url}${this.deviceId}/events/${this.eventName}?access_token=${this.accessToken}`;
     this.log('Listening for events from:', this.eventUrl);
@@ -30,7 +31,7 @@ class SensorAccessory extends Accessory {
 
   processEventData(e) {
     const data = JSON.parse(e.data);
-    const result = this.key ? data.data.split('=')[1] : data.data;
+    const result = this.key ? data.data.split(this.split_character)[1] : data.data;
 
     if (this.services.length < 2) {
       return;
