@@ -34,12 +34,12 @@ class ActorAccessory extends Accessory {
   }
 
   getState(callback) {
-    this.callParticleFunction("power", '?', (error, response, body) => {
-      this.value = parseInt(body);
+    this.callParticleFunction('power', '?', (error, response, body) => {
+      this.value = parseInt(body, 10);
       try {
         callback(null, this.value);
-      } catch (error) {
-        this.log('Caught error '+ error + ' when calling homebridge callback.');
+      } catch (err) {
+        this.log(`Caught error ${err} when calling homebridge callback.`);
       }
     },
     true);
@@ -47,7 +47,9 @@ class ActorAccessory extends Accessory {
 
   setState(functionName, value, callback) {
     this.value = value;
-    this.callParticleFunction(functionName, value, (error, response, body) => this.callbackHelper(error, response, body, callback), true);
+    this.callParticleFunction(functionName,
+                              value,
+                              (error, response, body) => this.callbackHelper(error, response, body, callback), true);
   }
 
   callbackHelper(error, response, body, callback) {
