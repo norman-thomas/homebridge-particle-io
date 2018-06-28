@@ -6,6 +6,7 @@ class ActorAccessory extends Accessory {
   constructor(log, url, accessToken, device, homebridge, ServiceType, CharacteristicType) {
     super(log, url, accessToken, device, homebridge, ServiceType, CharacteristicType);
 
+    this.function_name = !device.function_name ? 'power' : device.function_name;
     this.actorService = new ServiceType(this.name);
     this.actorService.getCharacteristic(CharacteristicType)
                      .on('set', this.setState.bind(this))
@@ -34,7 +35,7 @@ class ActorAccessory extends Accessory {
   }
 
   getState(callback) {
-    this.callParticleFunction('power', '?', (error, response, body) => {
+    this.callParticleFunction(this.function_name, '?', (error, response, body) => {
       this.value = parseInt(body, 10);
       try {
         callback(null, this.value);
@@ -45,9 +46,9 @@ class ActorAccessory extends Accessory {
     true);
   }
 
-  setState(functionName, value, callback) {
+  setState(value, callback) {
     this.value = value;
-    this.callParticleFunction(functionName,
+    this.callParticleFunction(this.function_name,
                               value,
                               (error, response, body) => this.callbackHelper(error, response, body, callback), true);
   }

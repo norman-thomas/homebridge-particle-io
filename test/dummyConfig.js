@@ -7,7 +7,8 @@ const dummyConfig = {
     {
       name: 'Bedroom Light',
       type: 'lightbulb',
-      device_id: 'abcdef1234567890'
+      device_id: 'abcdef1234567890',
+      function_name: 'testFunctionName'
     },
     {
       name: 'Kitchen Light',
