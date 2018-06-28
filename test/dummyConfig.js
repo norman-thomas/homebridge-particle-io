@@ -8,15 +8,12 @@ const dummyConfig = {
       name: 'Bedroom Light',
       type: 'lightbulb',
       device_id: 'abcdef1234567890',
-      function_name: 'onoff',
-      args: 'value={STATE}'
+      function_name: 'testFunctionName'
     },
     {
       name: 'Kitchen Light',
       type: 'lightbulb',
-      device_id: '1234567890abcdef',
-      function_name: 'onoff',
-      args: 'value={STATE}'
+      device_id: '1234567890abcdef'
     },
     {
       name: 'Kitchen Temperature',
@@ -28,7 +25,8 @@ const dummyConfig = {
       name: 'Kitchen Humidity',
       type: 'humiditysensor',
       device_id: '1234567890abcdef',
-      event_name: 'humidity'
+      event_name: 'humidity',
+      split_character: ':'
     },
     {
       name: 'Kitchen Light Sensor',

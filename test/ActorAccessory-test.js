@@ -5,12 +5,9 @@ const request = require('request');
 chai.use(require('sinon-chai'));
 
 const expect = chai.expect;
-
 const dummyConfig = require('./dummyConfig.js');
 const dummyHomebridge = require('./dummyHomebridge.js');
-
 const ActorAccessory = require('../src/ActorAccessory.js');
-
 
 describe('ActorAccessory.js', () => {
   describe('constructor', () => {
@@ -27,7 +24,6 @@ describe('ActorAccessory.js', () => {
       accessory.url.should.be.equal(dummyURL);
       accessory.accessToken.should.be.equal(dummyAccessToken);
       accessory.deviceId.should.be.equal(device.device_id);
-      accessory.functionName.should.be.equal(device.function_name);
 
       accessory.services.should.have.length(2);
       accessory.services[1].should.be.an.instanceOf(Service.Lightbulb);
@@ -53,16 +49,16 @@ describe('ActorAccessory.js', () => {
 
     it('should send value', () => {
       sinon.stub(request, 'post');
-      const value = 17.9;
+      const value = 17;
       accessory.setState(value, () => {});
 
       expect(request.post).to.have.been.calledOnce;
       expect(request.post).to.have.been.calledWith(
-        'https://some.random.url.com/abcdef1234567890/onoff',
+        'https://some.random.url.com/abcdef1234567890/testFunctionName',
         {
           form: {
             access_token: 'MY_top_SECRET_access_TOKEN',
-            arg: 'value=17.9',
+            arg: value,
             format: 'raw'
           }
         }
@@ -72,9 +68,9 @@ describe('ActorAccessory.js', () => {
 
     it('should call the callback function', () => {
       const spy = sinon.spy();
-      sinon.stub(request, 'post', () => { accessory.setStateCallback(undefined, 200, 'body', spy); });
+      sinon.stub(request, 'post', () => { accessory.callbackHelper(undefined, 200, 'body', spy); });
 
-      const value = 17.9;
+      const value = 17;
       accessory.setState(value, spy);
 
       expect(spy).to.have.been.calledOnce;
@@ -84,9 +80,9 @@ describe('ActorAccessory.js', () => {
 
     it('should call the callback function with error parameter', () => {
       const spy = sinon.spy();
-      sinon.stub(request, 'post', () => { accessory.setStateCallback('some error', 200, 'body', spy); });
+      sinon.stub(request, 'post', () => { accessory.callbackHelper('some error', 200, 'body', spy); });
 
-      const value = 17.9;
+      const value = 17;
       accessory.setState(value, spy);
 
       expect(spy).to.have.been.calledOnce;
