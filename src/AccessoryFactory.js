@@ -34,7 +34,7 @@ class AccessoryFactory {
   }
 
   createAccessory(device) {
-    this.log("Create Accessory for device:", device)
+    this.log('Create Accessory for device:', device);
     return new accessoryRegistry[device.type.toLowerCase()](
       this.log, this.url, this.accessToken, device, this.homebridge
     );

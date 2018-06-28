@@ -6,12 +6,12 @@ class ColorLightbulbAccessory extends DimmableLightbulbAccessory {
     const Characteristic = homebridge.hap.Characteristic;
     super(log, url, accessToken, device, homebridge);
 
-    this.hueFunctionName = "hue"
-		this.actorService.getCharacteristic(Characteristic.Hue)
+    this.hueFunctionName = 'hue';
+    this.actorService.getCharacteristic(Characteristic.Hue)
                      .on('set', this.setHue.bind(this))
                      .on('get', this.getHue.bind(this));
 
-    this.saturationFunctionName = "saturation"
+    this.saturationFunctionName = 'saturation';
     this.actorService.getCharacteristic(Characteristic.Saturation)
                      .on('set', this.setSaturation.bind(this))
                      .on('get', this.getSaturation.bind(this));
@@ -19,16 +19,17 @@ class ColorLightbulbAccessory extends DimmableLightbulbAccessory {
 
   setHue(value, callback) {
     this.hue = value;
-    this.callParticleFunction(this.hueFunctionName, value, (error, response, body) => this.callbackHelper(error, response, body, callback), true);
+    this.callParticleFunction(this.hueFunctionName, value,
+                              (error, response, body) => this.callbackHelper(error, response, body, callback), true);
   }
 
   getHue(callback) {
     this.callParticleFunction(this.hueFunctionName, '?', (error, response, body) => {
-      this.hue = parseInt(body);
+      this.hue = parseInt(body, 10);
       try {
         callback(null, this.hue);
-      } catch (error) {
-        this.log('Caught error '+ error + ' when calling homebridge callback.');
+      } catch (err) {
+        this.log(`Caught error ${err} when calling homebridge callback.`);
       }
     },
     true);
@@ -36,16 +37,17 @@ class ColorLightbulbAccessory extends DimmableLightbulbAccessory {
 
   setSaturation(value, callback) {
     this.saturation = value;
-    this.callParticleFunction(this.saturationFunctionName, value, (error, response, body) => this.callbackHelper(error, response, body, callback), true);
+    this.callParticleFunction(this.saturationFunctionName, value,
+                              (error, response, body) => this.callbackHelper(error, response, body, callback), true);
   }
 
   getSaturation(callback) {
     this.callParticleFunction(this.saturationFunctionName, '?', (error, response, body) => {
-      this.saturation = parseInt(body);
+      this.saturation = parseInt(body, 10);
       try {
         callback(null, this.saturation);
-      } catch (error) {
-        this.log('Caught error '+ error + ' when calling homebridge callback.');
+      } catch (err) {
+        this.log(`Caught error ${err} when calling homebridge callback.`);
       }
     },
     true);

@@ -52,7 +52,8 @@ In this version, I have made some changes from the older version. Mainly the plu
             "name": "Kitchen Temperature",
             "type": "temperaturesensor",
             "device_id": "<<device id>>",
-            "event_name": "tvalue"
+            "event_name": "tvalue",
+            "split_character": ":"
           }
         ]
       }
@@ -70,3 +71,10 @@ The `devices` array contains all the accessories. You can see the accessory obje
  - **event_name** - The name of the event to listen for sensor value update. This is only valid if the accessory is a sensor (i.e. currently `temperaturesensor` or `humiditysensor`). The plugin listens for events published from a Particle Device (using `Particle.publish`). The device firmware should publish the sensor values as a raw number.
  - **function_name** - The name of the particle function that will be called when an action is triggered via HomeKit. If there is no function provided, the default `power` will be used. This is only valid if the accessory is an actor (i.e. `lightbulb` or `switchaccessory`).
 
+**Particle Event Data Format**
+-------------------------------------
+By default it expects the event data as "key=value".
+```
+Particle.publish("tvalue", "temperature=20.7")
+```
+In order to parse JSON format, a custom `split_character` can be configured.
