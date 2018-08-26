@@ -34,18 +34,18 @@
     "request": "^2.85.0"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "coveralls": "^2.11.15",
-    "eslint": "^3.13.1",
-    "eslint-config-airbnb-base": "^11.0.1",
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.2",
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-mocha": "^4.8.0",
+    "eslint-plugin-mocha": "^5.2.0",
     "hap-nodejs": "^0.4.21",
     "jshint": "^2.9.4",
-    "mocha": "^3.2.0",
-    "nyc": "^10.0.0",
-    "should": "^11.1.2",
-    "sinon": "^1.17.7",
-    "sinon-chai": "^2.8.0"
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2",
+    "should": "^13.2.3",
+    "sinon": "^6.1.5",
+    "sinon-chai": "^3.2.0"
   }
 }
