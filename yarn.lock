@@ -1052,8 +1052,8 @@ handlebars@^4.0.11:
     uglify-js "^3.1.4"
 
 hap-nodejs@^0.4.21:
-  version "0.4.47"
-  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.4.47.tgz#77004b0e521d373cc20285d610d3ba619e2b7342"
+  version "0.4.48"
+  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.4.48.tgz#14aafb2f8b7709f229ff7f7889666b033b29afd7"
   dependencies:
     bonjour-hap "^3.5.1"
     buffer-shims "^1.0.0"
