@@ -22,7 +22,7 @@
     "lint": "eslint src/ test/",
     "jshint": "jshint src/",
     "check": "npm run lint && npm run jshint",
-    "test": "nyc --reporter=html --reporter=text mocha test/",
+    "test": "nyc --reporter=html --reporter=text mocha --exit test/",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "engines": {
