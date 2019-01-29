@@ -68,7 +68,7 @@ describe('ActorAccessory.js', () => {
 
     it('should call the callback function', () => {
       const spy = sinon.spy();
-      sinon.stub(request, 'post', () => { accessory.callbackHelper(undefined, 200, 'body', spy); });
+      sinon.stub(request, 'post').callsFake(() => { accessory.callbackHelper(undefined, 200, 'body', spy); });
 
       const value = 17;
       accessory.setState(value, spy);
@@ -80,7 +80,7 @@ describe('ActorAccessory.js', () => {
 
     it('should call the callback function with error parameter', () => {
       const spy = sinon.spy();
-      sinon.stub(request, 'post', () => { accessory.callbackHelper('some error', 200, 'body', spy); });
+      sinon.stub(request, 'post').callsFake(() => { accessory.callbackHelper('some error', 200, 'body', spy); });
 
       const value = 17;
       accessory.setState(value, spy);
