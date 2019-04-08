@@ -1352,9 +1352,9 @@ handlebars@^4.1.0:
     uglify-js "^3.1.4"
 
 hap-nodejs@^0.4.21:
-  version "0.4.48"
-  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.4.48.tgz#14aafb2f8b7709f229ff7f7889666b033b29afd7"
-  integrity sha512-z4Lyck7cTUcrcQ9EtJUqjRqh1+NRNAu0JWvqiYu31cA76A7AZV2EXuW57+ebxhFyYwh298/4KAiE8sM0ClX11w==
+  version "0.4.49"
+  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.4.49.tgz#371683e095c9caaab18d1654319652198604e55b"
+  integrity sha512-ZAluLSJOYgC5osO3U1HkHBf2ddGhGKVXUDJ+JjJXtCPjJm6jAr4UMFjeFePwPcogUsIKXlQzE/uB8Pq8xwMPuA==
   dependencies:
     bonjour-hap "^3.5.1"
     buffer-shims "^1.0.0"
