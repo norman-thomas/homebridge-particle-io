@@ -6,12 +6,14 @@ const HumiditySensorAccessory = require('./HumiditySensorAccessory.js');
 const TemperatureSensorAccessory = require('./TemperatureSensorAccessory.js');
 const LightSensorAccessory = require('./LightSensorAccessory.js');
 const MotionSensorAccessory = require('./MotionSensorAccessory.js');
+const ServoAccessory = require('./ServoAccessory.js');
 
 const accessoryRegistry = {
   lightbulb: LightbulbAccessory,
   dimmablelightbulb: DimmableLightbulbAccessory,
   colorlightbulb: ColorLightbulbAccessory,
   switch: SwitchAccessory,
+  servo: ServoAccessory,
   temperaturesensor: TemperatureSensorAccessory,
   humiditysensor: HumiditySensorAccessory,
   lightsensor: LightSensorAccessory,
