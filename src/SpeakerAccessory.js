@@ -36,4 +36,4 @@ class SpeakerAccessory extends ActorAccessory {
 
 }
 
-module.exports = LightbulbAccessory;
+module.exports = SpeakerAccessory;
