@@ -39,7 +39,7 @@
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-mocha": "^5.2.0",
+    "eslint-plugin-mocha": "^6.1.1",
     "hap-nodejs": "^0.4.21",
     "jshint": "^2.9.4",
     "mocha": "^6.0.1",
