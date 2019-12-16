@@ -1099,10 +1099,10 @@ handlebars@^4.1.0:
   optionalDependencies:
     uglify-js "^3.1.4"
 
-hap-nodejs@^0.4.21:
-  version "0.4.53"
-  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.4.53.tgz#86e263a54b7f90f6c6246b8d96870eff40eaa5a9"
-  integrity sha512-6i7m/sugXm/6jP9fLaGUbOtmvxvzcYCfyZFK9dv6kLeavCJparlIn50g+6hc6ljxq0d7Q1mH+pawCPUEq4ZC8Q==
+hap-nodejs@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/hap-nodejs/-/hap-nodejs-0.5.4.tgz#137943b3ba5afc54e89ecb4ff7edc90d8e1e5267"
+  integrity sha512-ok1jikRvnmVUYEqz33MTHuCrm6CHkF1lQfe79Z3ExTDdiuhRLobkAE6M51FspZVTaLCRudrGT3bwBFpTKqgrSw==
   dependencies:
     bonjour-hap "^3.5.1"
     buffer-shims "^1.0.0"
