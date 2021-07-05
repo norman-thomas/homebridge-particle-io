@@ -42,7 +42,7 @@
     "eslint-plugin-mocha": "^6.2.0",
     "hap-nodejs": "^0.4.21",
     "jshint": "^2.9.4",
-    "mocha": "^6.0.1",
+    "mocha": "^9.0.2",
     "nyc": "^13.1.0",
     "should": "^13.2.3",
     "sinon": "^4.5.0",
