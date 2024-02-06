@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "eventsource": "",
-    "request": "^2.85.0"
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "chai": "^4.2.0",
